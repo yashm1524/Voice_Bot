@@ -1,5 +1,7 @@
 # 🤖 Intelligent Voice Bot for Banking
 
+👉 Live Hosted Demo: https://voice-bot-frontend.onrender.com
+
 A full-stack AI Voice Assistant capable of handling banking queries, checking account balances, and answering FAQs using natural language. Built with **React**, **FastAPI**, **OpenAI/Ollama**, and **Speech-to-Text/Text-to-Speech** technologies.
 
 ![Architecture](screenshots/Architecture.png)
