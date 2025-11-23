@@ -9,6 +9,7 @@ SpeechRecognition
 pydub
 requests
 flask
+pydantic
 
 # Optional TTS providers (install as needed)
 # google-cloud-texttospeech  # For Google Cloud TTS
