@@ -8,6 +8,7 @@ gTTS
 SpeechRecognition
 pydub
 requests
+flask
 
 # Optional TTS providers (install as needed)
 # google-cloud-texttospeech  # For Google Cloud TTS
