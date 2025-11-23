@@ -3,8 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
 from backend.services.stt import transcribe_audio
-from backend.services.tts import generate_tts
-from backend.services.nlu import process_text
+from backend.services.tts import text_to_speech
+from backend.services.nlu import generate_response  
 from database import SessionLocal, Interaction
 import shutil
 import os
