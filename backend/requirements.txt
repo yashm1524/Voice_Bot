@@ -12,3 +12,6 @@ requests
 # Optional TTS providers (install as needed)
 # google-cloud-texttospeech  # For Google Cloud TTS
 # azure-cognitiveservices-speech  # For Azure TTS
+# Production Server
+gunicorn
+uvicorn[standard]

@@ -11,8 +11,9 @@ try {
   console.warn("Polyfill error (safe to ignore in modern browsers):", e);
 }
 
-const API_URL = "http://localhost:8000/api/process-audio";
-const TEXT_API_URL = "http://localhost:8000/api/process-text";
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const API_URL = `${BASE_URL}/api/process-audio`;
+const TEXT_API_URL = `${BASE_URL}/api/process-text`;
 
 function App() {
   const [messages, setMessages] = useState([
@@ -137,12 +138,12 @@ function App() {
   const addMessage = (role, text, audioUrl = null) => {
     setMessages(prev => [
       ...prev,
-      { role, text, audioUrl: audioUrl ? `http://localhost:8000${audioUrl}` : null }
+      { role, text, audioUrl: audioUrl ? `${BASE_URL}${audioUrl}` : null }
     ]);
   };
 
   const playAudio = (url) => {
-    new Audio(`http://localhost:8000${url}`).play().catch(e => console.log("Audio play error:", e));
+    new Audio(`${BASE_URL}${url}`).play().catch(e => console.log("Audio play error:", e));
   };
 
   const handleError = (error) => {
