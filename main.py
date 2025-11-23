@@ -23,6 +23,7 @@ def get_db():
 
 # CORS Configuration
 origins = [
+    "https://voice-bot-frontend.onrender.com",
     "http://localhost:5173",
     "http://localhost:3000",
 ]
