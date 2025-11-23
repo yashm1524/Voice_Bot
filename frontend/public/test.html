@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoiceBot Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-item {
+            background: #1e293b;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #6366f1;
+        }
+        .success { border-left-color: #10b981; }
+        .error { border-left-color: #ef4444; }
+        button {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #4f46e5;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔧 VoiceBot Connection Test</h1>
+        
+        <div class="test-item">
+            <h3>Frontend Server</h3>
+            <p>If you can see this page, the frontend is working! ✅</p>
+        </div>
+
+        <div class="test-item" id="backend-test">
+            <h3>Backend Connection</h3>
+            <p id="backend-status">Testing...</p>
+            <button onclick="testBackend()">Test Backend</button>
+        </div>
+
+        <div class="test-item">
+            <h3>React App</h3>
+            <p>The main app should be at: <a href="http://localhost:5173" style="color: #6366f1;">http://localhost:5173</a></p>
+            <button onclick="window.location.href='http://localhost:5173'">Go to Main App</button>
+        </div>
+
+        <div class="test-item">
+            <h3>Troubleshooting Steps</h3>
+            <ol>
+                <li>Make sure backend is running: <code>uvicorn main:app --reload --port 8000</code></li>
+                <li>Make sure frontend is running: <code>npm run dev</code></li>
+                <li>Clear browser cache: Press Ctrl+Shift+R</li>
+                <li>Check browser console: Press F12</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        async function testBackend() {
+            const statusEl = document.getElementById('backend-status');
+            const testEl = document.getElementById('backend-test');
+            
+            try {
+                statusEl.textContent = 'Testing backend connection...';
+                const response = await fetch('http://localhost:8000/health');
+                const data = await response.json();
+                
+                if (data.status === 'healthy') {
+                    statusEl.textContent = '✅ Backend is running and healthy!';
+                    testEl.classList.add('success');
+                } else {
+                    statusEl.textContent = '⚠️ Backend responded but status is: ' + data.status;
+                }
+            } catch (error) {
+                statusEl.textContent = '❌ Cannot connect to backend. Make sure it\'s running on port 8000.';
+                testEl.classList.add('error');
+                console.error('Backend test error:', error);
+            }
+        }
+
+        // Auto-test on load
+        window.addEventListener('load', testBackend);
+    </script>
+</body>
+</html>

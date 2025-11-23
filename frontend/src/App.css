@@ -1,0 +1,16 @@
+/* VoiceBot AI - App Styles */
+
+/* Remove any conflicting default styles */
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure full height */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,41 @@
+// Simple test version to verify React is working
+function App() {
+  return (
+    <div style={{
+      background: '#0f172a',
+      color: 'white',
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      padding: '20px'
+    }}>
+      <h1 style={{ fontSize: '3rem', marginBottom: '20px' }}>
+        🎤 VoiceBot AI
+      </h1>
+      <p style={{ fontSize: '1.5rem', marginBottom: '20px' }}>
+        React is working! ✅
+      </p>
+      <div style={{
+        background: '#1e293b',
+        padding: '30px',
+        borderRadius: '12px',
+        maxWidth: '600px',
+        textAlign: 'left'
+      }}>
+        <h2>Next Steps:</h2>
+        <ol style={{ lineHeight: '2' }}>
+          <li>If you see this, React is rendering correctly</li>
+          <li>Press F12 and check the Console tab for any errors</li>
+          <li>The full voice bot UI will load after we confirm this works</li>
+        </ol>
+        <div style={{ marginTop: '20px', padding: '15px', background: '#0f172a', borderRadius: '8px' }}>
+          <strong>Backend Status:</strong> Check <a href="http://localhost:8000/health" style={{ color: '#6366f1' }}>http://localhost:8000/health</a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
