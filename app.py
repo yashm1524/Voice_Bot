@@ -1,16 +1,17 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
+import os
+from openai import OpenAI
 
 app = Flask(__name__)
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-@app.route("/")
-def home():
-    return {"status": "Voice Bot running on Render"}
+@app.route("/chat", methods=["POST"])
+def chat():
+    user_msg = request.json.get("message", "")
 
-# Just a dummy API endpoint (you can expand later)
-@app.route("/bot", methods=["POST"])
-def bot():
-    text = request.json.get("text", "")
-    return {"response": f"You said: {text}"}
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": user_msg}]
+    )
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    return jsonify({"response": response.choices[0].message["content"]})
